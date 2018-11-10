@@ -9,11 +9,16 @@ const { sortRequest } = require("./filters/1337x.to");
 const { getLemons } =require('./limetorrent/movies')
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
 app.listen(port);
 
 // this is the app itself for now
+
+
+app.get('/',(req,res)=>{
+  res.send('hellow world')
+})
 
 app.get("/todaytvseries/:seriesName", (req, res) => {
   var seriesName = req.params.seriesName;
